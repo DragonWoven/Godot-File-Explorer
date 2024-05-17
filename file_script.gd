@@ -22,6 +22,7 @@ func dir_contents(path):
 				print("Found file: " + file_name)
 			button.text = file_name
 			button.connect("action", loadDir)
+			button.connect("select", selectButton)
 			grid.add_child(button)
 			button.set_dir(path + "/" + file_name)
 			file_name = dir.get_next()
@@ -29,15 +30,20 @@ func dir_contents(path):
 		print("An error occurred when trying to access the path.")
 	return directories
 
+func selectButton(node):
+	for i:Button in grid.get_children():
+		if i != node:
+			i.button_pressed=false
+		
+
 
 func loadDir(type , dir):
-	print(type)
-	#if type == "folder":
-		#for child in grid.get_children():
-			#child.queue_free()
-		#dir_contents(dir)
-	#if type == "file":
-		#return_file.emit(dir)
+	if type == "folder":
+		for child in grid.get_children():
+			child.queue_free()
+		dir_contents(dir)
+	if type == "file":
+		return_file.emit(dir)
 		
 	
 
