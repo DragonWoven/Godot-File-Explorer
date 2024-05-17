@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dap4cc0vsm7qs"]
+
+[ext_resource type="Script" path="res://dir_button.gd" id="1_hrx0b"]
+
+[node name="DirButton" type="Button"]
+offset_right = 82.0
+offset_bottom = 28.0
+toggle_mode = true
+script = ExtResource("1_hrx0b")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="toggled" from="." to="." method="_on_toggled"]
